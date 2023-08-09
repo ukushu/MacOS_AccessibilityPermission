@@ -6,18 +6,8 @@ struct PermissionsTestApp: App {
     
     var body: some Scene {
         WindowGroup {
-            VStack {
-                if self.permissionsService.isTrusted {
-                    MainView()
-                } else {
-                    PermissionsView()
-                }
-            }
-            .onAppear {
-                self.permissionsService.pollAccessibilityPrivileges(onTrusted: {
-                    
-                })
-            }
+            MainView()
+                .refreshAccessibility()
         }
     }
 }
