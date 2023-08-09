@@ -13,7 +13,11 @@ struct PermissionsTestApp: App {
                     PermissionsView()
                 }
             }
-            .onAppear(perform: self.permissionsService.pollAccessibilityPrivileges)
+            .onAppear {
+                self.permissionsService.pollAccessibilityPrivileges(onTrusted: {
+                    
+                })
+            }
         }
     }
 }

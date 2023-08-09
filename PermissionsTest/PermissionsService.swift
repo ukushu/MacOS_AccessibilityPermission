@@ -4,14 +4,19 @@ final class PermissionsService: ObservableObject {
     // Store the active trust state of the app.
     @Published var isTrusted: Bool = AXIsProcessTrusted()
     
+    static var shared: PermissionsService = .init()
     // Poll the accessibility state every 1 second to check
     //  and update the trust status.
-    func pollAccessibilityPrivileges() {
+    func pollAccessibilityPrivileges(onTrusted: @escaping () -> Void) {
+        //LoggerService.permissionTrustedState()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.isTrusted = AXIsProcessTrusted()
-            
+
             if !self.isTrusted {
-                self.pollAccessibilityPrivileges()
+                self.pollAccessibilityPrivileges(onTrusted: onTrusted)
+            } else {
+                onTrusted()
             }
         }
     }

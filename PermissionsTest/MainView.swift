@@ -1,13 +1,21 @@
 import SwiftUI
 
 struct MainView: View {
-    var body: some View{
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+    @StateObject private var permissionsService = PermissionsService.shared
+
+    var body: some View {
+        ZStack {
+
+            if self.permissionsService.isTrusted {
+                MainView()
+            } else {
+                PermissionsView()
+            }
         }
-        .padding()
+        .onAppear {
+            self.permissionsService.pollAccessibilityPrivileges(onTrusted: {
+                
+            })
+        }
     }
 }
