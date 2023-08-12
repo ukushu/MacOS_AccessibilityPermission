@@ -1,4 +1,4 @@
-# MacOS Accessibility request test repository
+# MacOS Accessibility request repository
 
 This repository shows how to add your app to System Settings -> Privacy and Security -> Accessibility list
 
