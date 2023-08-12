@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var permissionsService = PermissionsService.shared
+    @StateObject private var permissionsService = AccessibilityService.shared
     
     var body: some View {
         ZStack {
@@ -9,7 +9,6 @@ struct MainView: View {
                 GrantedView()
             } else {
                 PermissionsView()
-                    .refreshAccessibility()
             }
         }
     }
@@ -26,18 +25,21 @@ struct PermissionsView: View {
         VStack {
             Text("PermissionsView!")
             
-            Button("Try to give access") {
-                PermissionsService.acquireAccessibilityPrivileges()
+            Button("Request Accessibility access") {
+                AccessibilityService.requestAccessibilityAccess()
             }
         }
+        .isTrustedRefresher()
         .padding()
     }
 }
 
-extension View {
-    func refreshAccessibility() -> some View {
+fileprivate extension View {
+    func isTrustedRefresher() -> some View {
         self.onAppear {
-            PermissionsService.shared.pollAccessibilityPrivileges(onTrusted: { print("Accessibility is trusted") })
+            AccessibilityService
+                .shared
+                .accessibilityIsTrustedRefresh(onTrusted: { print("Accessibility is trusted") })
         }
     }
 }
