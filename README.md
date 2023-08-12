@@ -1,6 +1,7 @@
 # MacOS Accessibility request repository
 
-This repository shows how to add your app to System Settings -> Privacy and Security -> Accessibility list
+This repository shows how to add your app to:
+System Settings -> Privacy and Security -> Accessibility list
 
 
 [![Accessibility permission request using Swift][1]][1]
