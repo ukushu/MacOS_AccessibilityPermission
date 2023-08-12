@@ -4,7 +4,12 @@ This repository shows how to add your app to:
 
 System Settings -> Privacy and Security -> Accessibility list
 
-Date of repo creation: 2023 year, Swift 5
+Date of repo creation: 2023 year, 
+
+Swift 5
+
+MacOs target > 11.0
+
 
 
 [![Accessibility permission request using Swift][1]][1]
