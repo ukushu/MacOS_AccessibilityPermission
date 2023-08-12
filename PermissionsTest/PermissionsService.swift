@@ -5,15 +5,15 @@ final class PermissionsService: ObservableObject {
     
     static var shared: PermissionsService = .init()
     
-    // Poll the accessibility state every 1 second to check and update the trust status.
     func pollAccessibilityPrivileges(onTrusted: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            // print("isTrusted value refresh") // each 1~ sec
             self.isTrusted = AXIsProcessTrusted()
             
-            if !self.isTrusted {
-                self.pollAccessibilityPrivileges(onTrusted: onTrusted)
-            } else {
+            if self.isTrusted {
                 onTrusted()
+            } else {
+                self.pollAccessibilityPrivileges(onTrusted: onTrusted)
             }
         }
     }

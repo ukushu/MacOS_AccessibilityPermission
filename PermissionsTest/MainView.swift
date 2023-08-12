@@ -9,9 +9,9 @@ struct MainView: View {
                 GrantedView()
             } else {
                 PermissionsView()
+                    .refreshAccessibility()
             }
         }
-        .refreshAccessibility()
     }
 }
 
@@ -36,6 +36,8 @@ struct PermissionsView: View {
 
 extension View {
     func refreshAccessibility() -> some View {
-        self.onAppear { PermissionsService.shared.pollAccessibilityPrivileges(onTrusted: { }) }
+        self.onAppear {
+            PermissionsService.shared.pollAccessibilityPrivileges(onTrusted: { print("Accessibility is trusted") })
+        }
     }
 }
