@@ -18,7 +18,7 @@ final class AccessibilityService: ObservableObject {
         }
     }
     
-    static func requestAccessibilityAccess() {
+    func requestAccessibilityAccess() {
         let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString: true]
         let _ = AXIsProcessTrustedWithOptions(options)
     }

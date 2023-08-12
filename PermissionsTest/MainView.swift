@@ -26,7 +26,7 @@ struct PermissionsView: View {
             Text("PermissionsView!")
             
             Button("Request Accessibility access") {
-                AccessibilityService.requestAccessibilityAccess()
+                AccessibilityService.shared.requestAccessibilityAccess()
             }
         }
         .isTrustedRefresher()
