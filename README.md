@@ -10,7 +10,7 @@ Swift 5
 
 MacOs target > 11.0
 
-Sandbox status: DOES NOT WORK WITH SANDBOX ENABLED
+Sandbox status: DOES NOT WORK WITH SANDBOX ENABLED ( details are here: https://developer.apple.com/forums/thread/24288 )
 
 [![Accessibility permission request using Swift][1]][1]
 
