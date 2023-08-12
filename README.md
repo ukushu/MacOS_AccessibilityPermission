@@ -19,7 +19,7 @@ Nick Moore
 > 
 > https://stackoverflow.com/a/50901425/4423545
 
-So (looks like) this code does not do promts if app is sandboxed with Development sertificate, but promt will work on official release.
+So (looks like) this code does not do promts Alert if app is sandboxed with Development certificate, but promt will work on official release.
 
 
 
