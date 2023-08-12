@@ -16,13 +16,13 @@ struct MainView: View {
 }
 
 struct GrantedView: View {
-    var body: some View{
+    var body: some View {
         Text("Granted!")
     }
 }
 
 struct PermissionsView: View {
-    var body: some View{
+    var body: some View {
         VStack {
             Text("PermissionsView!")
             
@@ -36,8 +36,6 @@ struct PermissionsView: View {
 
 extension View {
     func refreshAccessibility() -> some View {
-        self
-        // Refresh Accessibility
-        .onAppear { PermissionsService.shared.pollAccessibilityPrivileges(onTrusted: { }) }
+        self.onAppear { PermissionsService.shared.pollAccessibilityPrivileges(onTrusted: { }) }
     }
 }
